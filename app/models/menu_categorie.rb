@@ -1,0 +1,3 @@
+class MenuCategorie < ApplicationRecord
+
+end

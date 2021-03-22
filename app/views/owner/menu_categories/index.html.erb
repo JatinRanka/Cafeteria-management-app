@@ -1,0 +1,14 @@
+<h1>Menu categories</h1>
+
+<%= form_with url: owner_menu_categories_path, method: :post do |form| %>
+  <%= form.text_field :name%>
+  <%= form.submit "Add category", class: "primary-btn" %>
+<% end %>
+
+<ul>
+  <% @menu_categories.each do |menu_category| %>
+    <li>
+      <p> <span> <%= menu_category.id %>. </span> <%= menu_category.name %> </p>
+    </li>
+  <% end %>
+</ul>
