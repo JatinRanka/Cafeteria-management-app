@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   get "/" => "home#index"
 
   resources :users
-  namespace :owner do
-    resources :menu_categories
-  end
+  resources :menu_items
+  resources :menu_categories
 
   get "/signin" => "sessions#new", as: :new_sessions
   post "/signin" => "sessions#create", as: :sessions

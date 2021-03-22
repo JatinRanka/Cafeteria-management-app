@@ -1,6 +1,6 @@
 <h1>Menu categories</h1>
 
-<%= form_with url: owner_menu_categories_path, method: :post do |form| %>
+<%= form_with url: menu_categories_path, method: :post do |form| %>
   <%= form.text_field :name%>
   <%= form.submit "Add category", class: "primary-btn" %>
 <% end %>
