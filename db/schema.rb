@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210322053333) do
+ActiveRecord::Schema.define(version: 20210322103814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "menu_categories", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "menu_items", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "price"
+    t.bigint "menu_categorie_id"
+    t.index ["menu_categorie_id"], name: "index_menu_items_on_menu_categorie_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -22,4 +34,5 @@ ActiveRecord::Schema.define(version: 20210322053333) do
     t.string "role"
   end
 
+  add_foreign_key "menu_items", "menu_categories", column: "menu_categorie_id"
 end
