@@ -21,10 +21,16 @@
         <%= menu_item.description %>
       </p>
 
-      <%= button_to "Add to cart", cart_items_path, method: :post, params: { menu_item_id: menu_item.id } %>
+      <%# Fetch the corresponsing cart item of a particular menu item %>
+      <% cart_item = menu_item.fetch_cart_item(@current_user) %>
+
+      <% if cart_item %>
+          <%= button_to :+, "cart_items/#{cart_item.id}", method: :patch, params: { type: :increment}, class: "button" %>
+          <%= button_to :-, "cart_items/#{cart_item.id}", method: :patch, params: { type: :decrement}, class: "button" %>
+      <% else %>
+          <%= button_to "Add to cart", cart_items_path, method: :post, params: { menu_item_id: menu_item.id }, class: "button" %>
+      <% end %>
 
     </div>
-
   <% end %>
-
 </div>
