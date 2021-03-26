@@ -1,0 +1,20 @@
+<div>
+  <h2>
+    <%= name%>
+  </h2>
+
+  <% items.each do |item| %>
+    <div class="menu-item-card">
+      <h2>
+        <%= item.menu_item_name %>
+      </h2>
+
+      <h4>
+        Rs. <%= item.menu_item_price %>
+      </h4>
+
+    </div>
+
+  <% end %>
+
+</div>
