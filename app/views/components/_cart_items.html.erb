@@ -9,9 +9,9 @@
         <%= item.menu_item_name %>
       </h2>
 
-      <h4>
-        Rs. <%= item.menu_item_price %>
-      </h4>
+      <p>
+        Rs. <%= item.menu_item_price %> * <%= item.quantity %> = <b> <%= item.menu_item_price*item.quantity %></b>
+      </p>
 
     </div>
 
