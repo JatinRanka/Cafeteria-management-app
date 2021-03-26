@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210326085558) do
+ActiveRecord::Schema.define(version: 20210326114822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,22 @@ ActiveRecord::Schema.define(version: 20210326085558) do
     t.index ["menu_categorie_id"], name: "index_menu_items_on_menu_categorie_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "order_id"
+    t.string "menu_item_name"
+    t.integer "menu_item_price"
+    t.integer "quantity"
+    t.bigint "menu_item_id"
+    t.index ["menu_item_id"], name: "index_order_items_on_menu_item_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "status"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -53,4 +69,7 @@ ActiveRecord::Schema.define(version: 20210326085558) do
   add_foreign_key "cart_items", "menu_items"
   add_foreign_key "carts", "users"
   add_foreign_key "menu_items", "menu_categories", column: "menu_categorie_id"
+  add_foreign_key "order_items", "menu_items"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "users"
 end
