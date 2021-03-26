@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210326051612) do
+ActiveRecord::Schema.define(version: 20210326085558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20210326051612) do
     t.bigint "menu_item_id"
     t.string "menu_item_name"
     t.integer "menu_item_price"
+    t.integer "quantity"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["menu_item_id"], name: "index_cart_items_on_menu_item_id"
   end
