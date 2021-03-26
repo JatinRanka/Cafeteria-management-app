@@ -15,3 +15,13 @@
   min-width: 40px;
   margin: 0.5rem;
 }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header h2 {
+  width: max-content;
+}

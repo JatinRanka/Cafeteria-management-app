@@ -1,6 +1,7 @@
-<h2>
-  Welcome! <%= @current_user.name%> (<%= @current_user.role%>)
-</h2>
+<div class="header">
+  <h2>Welcome - <%= @current_user.name%> (<%= @current_user.role%>)</h2>
+  <%= link_to "Checkout", "/cart" %>
+</div>
 
 <div class="items-conatiner">
   <%= render partial: "./components/menu_items", locals: { name: "Menu Items", menu_items: @menu_items } %>
