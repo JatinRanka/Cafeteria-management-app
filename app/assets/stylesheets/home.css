@@ -10,3 +10,8 @@
   display: flex;
   justify-content: space-around;
 }
+
+.button {
+  min-width: 40px;
+  margin: 0.5rem;
+}
