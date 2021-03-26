@@ -1,0 +1,30 @@
+<div>
+  <h2>
+    <%= name%>
+  </h2>
+
+  <% menu_items.each do |menu_item| %>
+    <div class="menu-item-card">
+      <h2>
+        <%= menu_item.name %>
+      </h2>
+
+      <span>
+        Category: <%= menu_item.menu_categorie.name%>
+      </span>
+
+      <h4>
+        Rs. <%= menu_item.price %>
+      </h4>
+
+      <p>
+        <%= menu_item.description %>
+      </p>
+
+      <%= button_to "Add to cart", cart_items_path, method: :post, params: { menu_item_id: menu_item.id } %>
+
+    </div>
+
+  <% end %>
+
+</div>

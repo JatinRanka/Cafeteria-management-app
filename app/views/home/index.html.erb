@@ -1,29 +1,8 @@
-<h1>
-  Welcome! This is home page
-</h1>
+<h2>
+  Welcome! <%= @current_user.name%> (<%= @current_user.role%>)
+</h2>
 
-<h2>Menu Items</h2>
-
-<% @menu_items.each do |menu_item| %>
-  <div class="menu-item-card">
-    <h2>
-      <%= menu_item.name %>
-    </h2>
-
-    <span>
-      Category: <%= menu_item.menu_categorie.name%>
-    </span>
-
-    <h4>
-      Rs. <%= menu_item.price %>
-    </h4>
-
-    <p>
-      <%= menu_item.description %>
-    </p>
-
-    <%= button_to "Add to cart"%>
-
-  </div>
-
-<% end %>
+<div class="items-conatiner">
+  <%= render partial: "./components/menu_items", locals: { name: "Menu Items", menu_items: @menu_items } %>
+  <%= render partial: "./components/cart_items", locals: { name: "Cart", items: @cart_items } %>
+<div>
