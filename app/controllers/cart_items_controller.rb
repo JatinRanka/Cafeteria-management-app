@@ -2,7 +2,7 @@ class CartItemsController < ApplicationController
 
   def index
     begin
-      cart = Cart.find_by(user_id: @current_user.id)
+      cart = Cart.of_user(@current_user)
 
       unless cart
         raise "Cart is empty"
@@ -18,7 +18,7 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    cart = Cart.find_by(user_id: @current_user.id)
+    cart = Cart.of_user(@current_user)
 
     # Creates cart for user if it doesn't exist
     unless cart

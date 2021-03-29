@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     @menu_items = MenuItem.all()
     @cart_items = []
 
-    cart = Cart.find_by(user_id: @current_user.id)
+    cart = Cart.of_user(@current_user)
     if cart
       @cart_items = cart.cart_items
     end
