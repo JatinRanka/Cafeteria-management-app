@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :menu_items
   resources :menu_categories
   resources :cart_items
+  resources :order_items
+  resources :orders
 
   get "/cart" => "cart#index", as: :cart
   post "/cart" => "cart#create", as: :cart_new
