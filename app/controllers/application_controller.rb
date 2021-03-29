@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def is_user_clerk_or_owner
+    unless (current_user[:role] == "owner" or current_user[:role] == "clerk")
+      redirect_to "/"
+    end
+  end
+
   def current_user
     return @current_user if @current_user
 
