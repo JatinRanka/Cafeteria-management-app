@@ -12,6 +12,7 @@
     <nav>
       <%= link_to "Home", home_path %>
       <%= link_to "Checkout", cart_path %>
+      <%= link_to :Orders, orders_path%>
       <%= link_to "Signout", destroy_session_path %>
     </nav>
   <% end %>
@@ -20,6 +21,12 @@
   <%if flash[:error]%>
     <p class="flash-error">
       <%= flash[:error]%>
+    </p>
+  <% end %>
+
+   <%if flash[:success]%>
+    <p class="flash-success">
+      <%= flash[:success]%>
     </p>
   <% end %>
 
