@@ -1,0 +1,19 @@
+<h1>Menu Items</h1>
+
+<%= form_with url: menu_items_path, method: :post do |form| %>
+  <%= form.text_field :name, placeholder: "Enter item name", :required => true %>
+  <%= form.text_field :description, placeholder: "Enter decription" %>
+  <%= form.number_field :price, min: 1, placeholder: "Enter item price", :required => true %>
+
+  <%= form.select "menu_categorie_id", options_from_collection_for_select(@menu_categories, :id, :name)  %>
+
+  <%= form.submit "Add item", class: "primary-btn" %>
+<% end %>
+
+<ul>
+  <% @menu_items.each do |menu_item| %>
+    <li>
+      <p> <span> <%= menu_item.id %>. </span> <%= menu_item.name %> - <%= menu_item.menu_categorie.name %></p>
+    </li>
+  <% end %>
+</ul>
