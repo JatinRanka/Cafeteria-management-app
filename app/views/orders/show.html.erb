@@ -1,6 +1,17 @@
  <p>
   <b><%= @order.id%></b> -
-  <%= @order.status%>
+  <%= @order.is_delivered ? "Delivered" : "Pending" %>
 </p>
+
+<% if (@current_user.role == "owner" or @current_user.role == "clerk") %>
+
+  <%= form_with url: "/orders/#{@order.id}", method: :put do %>
+    <%= check_box_tag :is_delivered, true, @order.is_delivered ? true : false, onclick: "this.form.submit()"  %>
+    <label>Delivered</label>
+  <% end %>
+
+<% end %>
+
+
 
 <%= render partial: "./components/cart_items", locals: { name: "Order items", items: @order.order_items } %>

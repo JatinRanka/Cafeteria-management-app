@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :is_user_clerk_or_owner, only: [:update]
+
   def index
     @orders = Order.of_user(@current_user)
     render "index"
@@ -34,6 +36,18 @@ class OrdersController < ApplicationController
     @order = Order.of_user(@current_user).find(id)
 
     render "show"
+  end
+
+  def update
+    id = params[:id]
+    is_delivered = params[:is_delivered]
+
+    order = Order.find(id)
+
+    order.is_delivered = is_delivered
+    order.save
+
+    redirect_to orders_path
   end
 
 end

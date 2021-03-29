@@ -3,7 +3,7 @@
 
     <p>
       <b><%= order.id%></b> -
-      <%= order.status%>
+      <%= order.is_delivered ? "Delivered" : "Pending" %>
     </p>
 
     <%= link_to "Order details",  "/orders/#{order.id}"%>
