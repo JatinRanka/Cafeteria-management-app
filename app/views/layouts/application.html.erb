@@ -10,10 +10,10 @@
 
   <% if @current_user%>
     <nav>
-      <%= link_to "Home", home_path %>
-      <%= link_to "Checkout", cart_path %>
+      <%= link_to :Home, home_path %>
+      <%= link_to :Checkout, cart_path %>
       <%= link_to :Orders, orders_path%>
-      <%= link_to "Signout", destroy_session_path %>
+      <%= link_to :Signout, destroy_session_path %>
     </nav>
   <% end %>
 
