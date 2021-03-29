@@ -1,0 +1,6 @@
+ <p>
+  <b><%= @order.id%></b> -
+  <%= @order.status%>
+</p>
+
+<%= render partial: "./components/cart_items", locals: { name: "Order items", items: @order.order_items } %>

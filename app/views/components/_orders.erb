@@ -1,0 +1,12 @@
+<div class="orders">
+  <% orders.each do |order| %>
+
+    <p>
+      <b><%= order.id%></b> -
+      <%= order.status%>
+    </p>
+
+    <%= link_to "Order details",  "/orders/#{order.id}"%>
+
+  <% end %>
+</div>
