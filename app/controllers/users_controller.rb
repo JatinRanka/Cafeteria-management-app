@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
   skip_before_action :ensure_user_logged_in, only: [:new, :create]
+  before_action :is_user_owner, except: [:new, :create]
+
+  def index
+    @users = User.all
+  end
 
   def new
-    render "index"
+    render "new"
   end
 
   def create

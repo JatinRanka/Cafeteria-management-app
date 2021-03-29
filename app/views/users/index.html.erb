@@ -1,0 +1,67 @@
+<h2>List of users</h2>
+
+<section class="Form-Container">
+
+  <%= form_with url: users_path, method: :post do |form| %>
+    <div class="Form-section">
+      <label>Name: </label>
+      <%= form.text_field :name, class: "Form-Input", placeholder: "Enter name", :required => true %>
+    </div>
+
+    <br >
+
+    <div class="Form-section">
+      <label>Email: </label>
+      <%= form.email_field :email, class: "Form-Input", placeholder: "Enter email", :required => true %>
+    </div>
+
+    <br >
+
+    <div class="Form-section">
+      <label>Password: </label>
+      <%= form.password_field :password, class: "Form-Input", placeholder: "Enter password", :required => true %>
+    </div>
+
+    <br >
+
+    <div class="Form-section">
+      <label>Select role: </label>
+      <%= form.select :role, [["Clerk","clerk"], ["Owner", "owner"]]  %>
+    </div>
+
+    <br />
+
+    <%= form.submit "Add user", class: "primary-btn" %>
+
+  <% end %>
+
+  <br />
+
+</section>
+
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Role</th>
+  </tr>
+
+<% @users.each do |user|%>
+  <tr>
+    <td>
+      <%= user.id%>
+    </td>
+
+    <td>
+      <%= user.name%>
+    </td>
+
+    <td>
+      <%= user.role%>
+    </td>
+  </tr>
+
+<% end %>
+
+</table>
