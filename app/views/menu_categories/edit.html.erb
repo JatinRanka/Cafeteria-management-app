@@ -1,0 +1,7 @@
+<div class="my-1">
+  <%= form_with url: "/menu_categories/#{@menu_categorie.id}", method: :put do |form| %>
+    <label>Menu category: </label>
+    <%= form.text_field :name, placeholder: "Ex: lunch", value: @menu_categorie.name %>
+    <%= form.submit "Update category", class: "primary-btn"%>
+  <% end %>
+</div>
