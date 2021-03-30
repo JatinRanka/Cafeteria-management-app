@@ -35,6 +35,7 @@ class CartItemsController < ApplicationController
       menu_item_name: menu_item.name,
       menu_item_price: menu_item.price,
       quantity: 1,
+      amount: menu_item.price,
       cart_id: cart.id
     )
 
@@ -47,14 +48,21 @@ class CartItemsController < ApplicationController
     update_type = params[:type]
 
     if update_type == "increment"
-      CartItem.find(cart_item_id).increment!(:quantity)
+      cart_item = CartItem.find(cart_item_id)
+      cart_item.quantity = cart_item.quantity + 1
+      cart_item.amount = cart_item.quantity * cart_item.menu_item_price
+      cart_item.save
+
     else # decrement
-      cart_item = CartItem.find(cart_item_id).decrement!(:quantity)
+      cart_item = CartItem.find(cart_item_id)
+      cart_item.quantity = cart_item.quantity - 1
 
       if cart_item.quantity == 0
         cart_item.delete()
+      else
+        cart_item.amount = cart_item.quantity * cart_item.menu_item_price
+        cart_item.save
       end
-
     end
 
     redirect_to home_path
