@@ -1,6 +1,9 @@
  <p>
   <b><%= @order.id%></b> -
-  <%= @order.is_delivered ? "Delivered" : "Pending" %>
+  <%= @order.is_delivered ? "Delivered" : "Pending" %> -
+  <small>
+    <%= @order.created_at.to_formatted_s(:short) %>
+  </small>
 </p>
 
 <% if (@current_user.role == "owner" or @current_user.role == "clerk") %>
@@ -11,7 +14,5 @@
   <% end %>
 
 <% end %>
-
-
 
 <%= render partial: "./components/cart_items", locals: { name: "Order items", items: @order.order_items } %>

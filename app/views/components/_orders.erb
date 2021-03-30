@@ -3,7 +3,11 @@
 
     <p>
       <b><%= order.id%></b> -
-      <%= order.is_delivered ? "Delivered" : "Pending" %>
+      <%= order.is_delivered ? "Delivered" : "Pending" %> -
+      <small>
+        <%= order.created_at.to_formatted_s(:short) %>
+      </small>
+
     </p>
 
     <%= link_to "Order details",  "/orders/#{order.id}"%>
