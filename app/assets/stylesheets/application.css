@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+.my-1 {
+  margin: 1rem 0rem;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  margin: 0.5rem 0rem;
+}
+
+.material-icons {
+  font-size: inherit;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  visibility: hidden;
+}
+
+.icon-container:hover .material-icons {
+  visibility: visible;
+}

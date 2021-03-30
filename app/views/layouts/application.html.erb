@@ -3,6 +3,7 @@
   <head>
     <title>CafeteriaManagementApp</title>
     <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,6 +13,7 @@
     <nav>
       <% if @current_user.role == "owner"%>
         <%= link_to :Users, users_path %>
+        <%= link_to :"Menu", menu_categories_path %>
       <% end %>
       <%= link_to :Home, home_path %>
       <%= link_to :Checkout, cart_path %>

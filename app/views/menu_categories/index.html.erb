@@ -1,14 +1,27 @@
 <h1>Menu categories</h1>
 
 <%= form_with url: menu_categories_path, method: :post do |form| %>
-  <%= form.text_field :name%>
-  <%= form.submit "Add category", class: "primary-btn" %>
+  <label>Menu category: </label>
+  <%= form.text_field :name, placeholder: "Ex: lunch" %>
+  <%= form.submit "Add category", class: "primary-btn"%>
 <% end %>
 
 <ul>
   <% @menu_categories.each do |menu_category| %>
-    <li>
-      <p> <span> <%= menu_category.id %>. </span> <%= menu_category.name %> </p>
+      <li class="icon-container">
+        <%= menu_category.id %> - <%= menu_category.name %>
+        <%= link_to content_tag(:span, 'create', class: "material-icons"), "/menu_categories/#{menu_category.id}/edit" %>
+      </li>
+
+      <ul>
+        <% menu_category.menu_items.each do |menu_item| %>
+          <li class="icon-container">
+            <%= menu_item.id%> - <%= menu_item.name%>
+            <%= link_to content_tag(:span, 'create', class: "material-icons"), "/menu_items/#{menu_item.id}/edit" %>
+          </li>
+        <% end %>
+      </ul>
+
     </li>
   <% end %>
 </ul>
