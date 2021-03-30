@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210329101524) do
+ActiveRecord::Schema.define(version: 20210330090548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20210329101524) do
     t.string "menu_item_name"
     t.integer "menu_item_price"
     t.integer "quantity"
+    t.integer "amount"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["menu_item_id"], name: "index_cart_items_on_menu_item_id"
   end
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 20210329101524) do
     t.integer "menu_item_price"
     t.integer "quantity"
     t.bigint "menu_item_id"
+    t.integer "amount"
     t.index ["menu_item_id"], name: "index_order_items_on_menu_item_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end

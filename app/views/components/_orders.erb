@@ -4,6 +4,7 @@
     <p>
       <b><%= order.id%></b> -
       <%= order.is_delivered ? "Delivered" : "Pending" %> -
+      Rs. <%= order.order_items.sum(:amount) %> -
       <small>
         <%= order.created_at.to_formatted_s(:short) %>
       </small>

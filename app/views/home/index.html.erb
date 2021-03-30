@@ -5,5 +5,5 @@
 
 <div class="items-conatiner">
   <%= render partial: "./components/menu_items", locals: { name: "Menu Items", menu_items: @menu_items } %>
-  <%= render partial: "./components/cart_items", locals: { name: "Cart", items: @cart_items } %>
+  <%= render partial: "./components/cart_items", locals: { name: "Cart", items: @cart_items, total_amount: @total_amount } %>
 <div>

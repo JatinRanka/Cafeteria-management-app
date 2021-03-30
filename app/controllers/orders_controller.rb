@@ -20,7 +20,8 @@ class OrdersController < ApplicationController
         menu_item_name: cart_item.menu_item_name,
         menu_item_price: cart_item.menu_item_price,
         quantity: cart_item.quantity,
-        menu_item_id: cart_item.menu_item_id
+        menu_item_id: cart_item.menu_item_id,
+        amount: cart_item.amount
       }
     }
 
@@ -34,6 +35,7 @@ class OrdersController < ApplicationController
   def show
     id = params[:id]
     @order = Order.of_user(@current_user).find(id)
+    @total_amount = @order.order_items.sum(:amount)
 
     render "show"
   end
