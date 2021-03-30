@@ -45,6 +45,7 @@
     <th>ID</th>
     <th>Name</th>
     <th>Role</th>
+    <th>E Mail</th>
   </tr>
 
 <% @users.each do |user|%>
@@ -59,6 +60,10 @@
 
     <td>
       <%= user.role%>
+    </td>
+
+    <td>
+      <%= user.email%>
     </td>
   </tr>
 
