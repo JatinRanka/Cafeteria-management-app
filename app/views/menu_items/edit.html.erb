@@ -1,0 +1,11 @@
+<div class="my-1">
+  <%= form_with url: "/menu_items/#{@menu_item.id}", method: :put do |form| %>
+    <%= form.text_field :name, placeholder: "Enter item name", :required => true, value: @menu_item.name %>
+    <%= form.text_field :description, placeholder: "Enter description", value: @menu_item.description %>
+    <%= form.number_field :price, min: 1, placeholder: "Enter item price", :required => true, value: @menu_item.price %>
+
+    <%= form.select "menu_categorie_id", options_from_collection_for_select(@menu_categories, :id, :name, @menu_item.menu_categorie_id ) %>
+
+    <%= form.submit "Update item", class: "primary-btn" %>
+  <% end %>
+</div>
