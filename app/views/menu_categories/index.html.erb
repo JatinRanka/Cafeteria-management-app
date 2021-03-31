@@ -3,13 +3,20 @@
 <%= form_with url: menu_categories_path, method: :post do |form| %>
   <label>Menu category: </label>
   <%= form.text_field :name, placeholder: "Ex: lunch" %>
+
+  <label> Is Active </label>
+  <%= check_box_tag :is_active, true %>
+
   <%= form.submit "Add category", class: "primary-btn"%>
 <% end %>
 
 <ul>
   <% @menu_categories.each do |menu_category| %>
       <li class="icon-container">
-        <%= menu_category.id %> - <%= menu_category.name %>
+        <%= menu_category.id %> - <%= menu_category.name %> &nbsp;
+        <small>
+           (<%= menu_category.is_active ? "Active" : "Inactive" %>)
+        </small>
         <%= link_to content_tag(:span, 'create', class: "material-icons"), "/menu_categories/#{menu_category.id}/edit" %>
       </li>
 

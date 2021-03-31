@@ -2,6 +2,10 @@
   <%= form_with url: "/menu_categories/#{@menu_categorie.id}", method: :put do |form| %>
     <label>Menu category: </label>
     <%= form.text_field :name, placeholder: "Ex: lunch", value: @menu_categorie.name %>
+
+    <label> Is Active </label>
+    <%= check_box_tag :is_active, true, @menu_categorie.is_active ? true : false %>
+
     <%= form.submit "Update category", class: "primary-btn"%>
   <% end %>
 </div>

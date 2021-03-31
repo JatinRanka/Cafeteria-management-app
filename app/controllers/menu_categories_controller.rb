@@ -8,7 +8,8 @@ class MenuCategoriesController < ApplicationController
 
   def create
     MenuCategorie.create!(
-      name: params[:name]
+      name: params[:name],
+      is_active: params[:is_active]
     )
 
     redirect_to menu_categories_path
@@ -23,9 +24,11 @@ class MenuCategoriesController < ApplicationController
   def update
     id = params[:id]
     name = params[:name]
+    is_active = params[:is_active]
 
     menu_categorie = MenuCategorie.find(id)
     menu_categorie.name = name
+    menu_categorie.is_active = is_active
     menu_categorie.save
 
     flash[:success] = "Menu category updated."
