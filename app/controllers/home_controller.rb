@@ -1,6 +1,13 @@
 class HomeController < ApplicationController
   def index
-    @menu_items = MenuItem.all()
+    menu_categories = MenuCategorie.where(is_active: true)
+    @menu_items = []
+
+    menu_categories.each {
+      |menu_categorie|
+      @menu_items.concat(menu_categorie.menu_items)
+    }
+
     @cart_items = []
     @total_amount = 0
 
