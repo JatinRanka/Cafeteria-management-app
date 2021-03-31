@@ -1,17 +1,39 @@
 <div class="orders">
-  <% orders.each do |order| %>
 
-    <p>
-      <b><%= order.id%></b> -
-      <%= order.is_delivered ? "Delivered" : "Pending" %> -
-      Rs. <%= order.order_items.sum(:amount) %> -
-      <small>
-        <%= order.created_at.to_formatted_s(:short) %>
-      </small>
+  <table class="my-1">
+    <tr>
+      <th>ID</th>
+      <th>Date</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th> </th>
+    </tr>
 
-    </p>
+    <% orders.each do |order| %>
+      <tr>
+        <td>
+          <%= order.id%>
+        </td>
 
-    <%= link_to "Order details",  "/orders/#{order.id}"%>
+        <td>
+          <%= order.created_at.to_formatted_s(:short) %>
+        </td>
 
-  <% end %>
+        <td>
+          Rs. <%= order.order_items.sum(:amount) %>
+        </td>
+
+        <td>
+          <%= order.is_delivered ? "Delivered" : "Pending"%>
+        </td>
+
+        <td>
+          <%= link_to "Order details",  "/orders/#{order.id}"%>
+        </td>
+
+      </tr>
+    <% end %>
+
+    </table>
+
 </div>
