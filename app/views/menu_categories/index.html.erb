@@ -24,7 +24,6 @@
         <% menu_category.menu_items.each do |menu_item| %>
           <li class="icon-container">
             <%= menu_item.id%> - <%= menu_item.name%>
-            <%= link_to content_tag(:span, 'create', class: "material-icons"), "/menu_items/#{menu_item.id}/edit" %>
           </li>
         <% end %>
       </ul>

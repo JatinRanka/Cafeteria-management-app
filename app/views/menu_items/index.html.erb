@@ -10,10 +10,39 @@
   <%= form.submit "Add item", class: "primary-btn" %>
 <% end %>
 
-<ul>
+<table class="my-1">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Category</th>
+    <th> </th>
+  </tr>
+
   <% @menu_items.each do |menu_item| %>
-    <li>
-      <p> <span> <%= menu_item.id %>. </span> <%= menu_item.name %> - <%= menu_item.menu_categorie.name %></p>
-    </li>
+    <tr>
+    <td>
+      <%= menu_item.id%>
+    </td>
+
+    <td>
+      <%= menu_item.name%>
+    </td>
+
+    <td>
+      <%= menu_item.price%>
+    </td>
+
+    <td>
+      <%= menu_item.menu_categorie.name%>
+    </td>
+
+    <td>
+      <%= link_to content_tag(:span, 'edit', class: ""), "/menu_items/#{menu_item.id}/edit" %>
+    </td>
+  </tr>
+
+
   <% end %>
-</ul>
+
+</table>

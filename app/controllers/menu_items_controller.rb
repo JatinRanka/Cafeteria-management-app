@@ -40,6 +40,6 @@ class MenuItemsController < ApplicationController
     menu_item.save
 
     flash[:success] = "Menu item updated."
-    redirect_to menu_categories_path
+    redirect_to menu_items_path
   end
 end

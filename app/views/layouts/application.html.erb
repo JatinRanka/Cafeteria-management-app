@@ -13,8 +13,10 @@
     <nav>
       <% if @current_user.role == "owner"%>
         <%= link_to :Users, users_path %>
-        <%= link_to :"Menu", menu_categories_path %>
+        <%= link_to :"Menu Categories", menu_categories_path %>
+        <%= link_to :"Menu Items", menu_items_path %>
       <% end %>
+
       <%= link_to :Home, home_path %>
       <%= link_to :Checkout, cart_path %>
       <%= link_to :Orders, orders_path%>
