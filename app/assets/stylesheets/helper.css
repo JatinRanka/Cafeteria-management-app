@@ -1,0 +1,17 @@
+.alert {
+  border-radius: 0.25rem;
+  border: solid 1px transparent;
+  padding: 0.7rem 1rem;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  color: #3c763d;
+  border-left: solid 4px #3c763d;
+}
+
+.alert-error {
+  background-color: #f2dede;
+  color: #a94442;
+  border-left: solid 4px #a94442;
+}
