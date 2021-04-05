@@ -5,31 +5,41 @@
 
   <% menu_items.each do |menu_item| %>
     <div class="menu-item-card">
-      <h2>
-        <%= menu_item.name %>
-      </h2>
 
-      <span>
+      <div class="header">
+        <h2 class="menu-item-name">
+        <%= menu_item.name %>
+        </h2>
+
+        <h4>
+          Rs. <%= menu_item.price %>
+        </h4>
+
+      </div>
+
+
+      <span class="my-0">
         Category: <%= menu_item.menu_categorie.name%>
       </span>
-
-      <h4>
-        Rs. <%= menu_item.price %>
-      </h4>
 
       <p>
         <%= menu_item.description %>
       </p>
 
-      <%# Fetch the corresponsing cart item of a particular menu item %>
-      <% cart_item = menu_item.fetch_cart_item(@current_user) %>
+      <div class="footer">
 
-      <% if cart_item %>
-          <%= button_to :+, "cart_items/#{cart_item.id}", method: :patch, params: { type: :increment}, class: "button" %>
-          <%= button_to :-, "cart_items/#{cart_item.id}", method: :patch, params: { type: :decrement}, class: "button" %>
-      <% else %>
-          <%= button_to "Add to cart", cart_items_path, method: :post, params: { menu_item_id: menu_item.id }, class: "button" %>
-      <% end %>
+        <%# Fetch the corresponsing cart item of a particular menu item %>
+        <% cart_item = menu_item.fetch_cart_item(@current_user) %>
+
+        <%# Check if menu item is already present in cart %>
+        <% if cart_item %>
+            <%= button_to :+, "cart_items/#{cart_item.id}", method: :patch, params: { type: :increment}, class: "button primary-button" %>
+            <%= button_to :-, "cart_items/#{cart_item.id}", method: :patch, params: { type: :decrement}, class: "button secondary-button" %>
+        <% else %>
+            <%= button_to :"Add to cart", cart_items_path, method: :post, params: { menu_item_id: menu_item.id }, class: "button primary-button" %>
+        <% end %>
+
+      </div>
 
     </div>
   <% end %>
