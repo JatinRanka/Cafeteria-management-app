@@ -1,6 +1,8 @@
 <div class="header">
   <h2>Welcome - <%= @current_user.name%> (<%= @current_user.role%>)</h2>
-  <%= link_to "Checkout", "/cart" %>
+  <% if @cart_items.to_a.length != 0 %>
+    <%= button_to :Checkout, cart_path, method: :get, class: "button primary-button" %>
+  <% end %>
 </div>
 
 <div class="items-conatiner">
