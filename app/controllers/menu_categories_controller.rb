@@ -12,6 +12,7 @@ class MenuCategoriesController < ApplicationController
       is_active: params[:is_active]
     )
 
+    flash[:success] = "Menu category added."
     redirect_to menu_categories_path
   end
 

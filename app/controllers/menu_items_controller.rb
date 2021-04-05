@@ -15,6 +15,7 @@ class MenuItemsController < ApplicationController
       menu_categorie_id: params[:menu_categorie_id]
     )
 
+    flash[:success] = "Menu item added."
     redirect_to menu_items_path
   end
 
