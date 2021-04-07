@@ -2,7 +2,29 @@ class OrdersController < ApplicationController
   before_action :is_user_clerk_or_owner, only: [:update]
 
   def index
-    @orders = Order.of_user(@current_user)
+    # @orders = Order.of_user(@current_user)
+
+    if @current_user.role == "owner"
+      customer_name = params[:customer_name]
+      start_date = params[:start_date]
+      end_date = params[:end_date]
+
+      if customer_name
+        user = User.find_by(name: customer_name)
+        @orders = Order.where(user_id: user.id)
+      end
+
+    end
+
+    @orders ||= Order.of_user(@current_user)
+
+    puts "-------out if : #{@orders.to_a.length()}"
+    puts @orders.to_a
+
+
+    # @orders = Order.where(user_id: 1) if params[:customer_name]
+    # puts params[:customer_name]
+
     render "index"
   end
 
@@ -49,6 +71,7 @@ class OrdersController < ApplicationController
     order.is_delivered = is_delivered
     order.save
 
+    flash[:success] = "Updated order id: #{id}"
     redirect_to orders_path
   end
 

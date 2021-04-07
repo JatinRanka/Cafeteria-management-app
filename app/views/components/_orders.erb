@@ -1,8 +1,12 @@
 <div class="orders">
-
   <table class="my-1">
     <tr>
       <th>ID</th>
+
+      <% if @current_user.role == "owner" %>
+        <th>Customer name</th>
+      <% end %>
+
       <th>Date</th>
       <th>Amount</th>
       <th>Status</th>
@@ -14,6 +18,12 @@
         <td>
           <%= order.id%>
         </td>
+
+        <% if @current_user.role == "owner" %>
+          <td>
+            <%= order.user.name%>
+          </td>
+        <% end %>
 
         <td>
           <%= order.created_at.to_formatted_s(:short) %>

@@ -1,1 +1,18 @@
+<% if @current_user.role == "owner" %>
+    <%= form_with url: "/orders", method: :get, class: "my-1" do |form| %>
+
+        <label>Customer name: </label>
+        <%= form.text_field :customer_name, placeholder: "Ex: John" %>
+
+        <label>Start date: </label>
+        <%= form.date_field :start_date%>
+
+        <label>End date: </label>
+        <%= form.date_field :end_date, max: Date.today%>
+
+        <%= form.submit "Fetch details", class: "button primary-button my-1"%>
+    <% end %>
+
+<% end %>
+
 <%= render partial: "./components/orders", locals: { orders: @orders } %>
