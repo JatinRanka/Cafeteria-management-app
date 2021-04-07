@@ -1,24 +1,39 @@
-# README
+# Cafeteria Management System - Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Persona
 
-Things you may want to cover:
+There are three personas in Cafeteria system:
 
-* Ruby version
+### Cafeteria Owner:
 
-* System dependencies
+The owner has complete access of the system. He/she can add and update stock, create invoices, see all reports, add users.
 
-* Configuration
+### Online Customer:
 
-* Database creation
+A customer can place an order online. They can see the invoice details and status of their order only.
 
-* Database initialization
+### Cafeteria Billing Clerk:
 
-* How to run the test suite
+The billing clerk can update and place customer orders directly from the counter. They can create new invoices, and see order status.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Credentails for demo:
 
-* Deployment instructions
+| User Role | Email              | Password |
+| --------- | ------------------ | -------- |
+| Owner     | owner@gmail.com    | pwd      |
+| Clerk     | clerk@gmail.com    | pwd      |
+| Customer  | csutomer@gmail.com | pwd      |
 
-* ...
+## Screenshots
+
+### Home page
+
+![Home page](./screenshots/home.png)
+
+### Users page
+
+![Home page](./screenshots/users.png)
+
+### Menu Categories page
+
+![Home page](./screenshots/menu-categories.png)
