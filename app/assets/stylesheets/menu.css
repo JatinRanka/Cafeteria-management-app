@@ -1,10 +1,10 @@
 .menu-item-card {
   text-transform: capitalize;
+  width: 300px;
 }
 
 .menu-item-card .menu-item-name {
   margin: 0rem;
-  margin-bottom: 0.5rem;
 }
 
 .menu-item-card .footer {
