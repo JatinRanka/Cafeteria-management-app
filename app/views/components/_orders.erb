@@ -7,7 +7,7 @@
         <th>Customer name</th>
       <% end %>
 
-      <th>Date</th>
+      <%# <th>Date</th> %>
       <th>Amount</th>
       <th>Status</th>
       <th> </th>
@@ -25,9 +25,9 @@
           </td>
         <% end %>
 
-        <td>
-          <%= order.created_at.to_formatted_s(:short) %>
-        </td>
+        <%# <td> %>
+          <%# <%= order.created_at.to_formatted_s(:short) %> %>
+        <%# </td> %>
 
         <td>
           Rs. <%= order.order_items.sum(:amount) %>
