@@ -25,3 +25,9 @@
 .header h2 {
   width: max-content;
 }
+
+.checkout-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem;
+}
