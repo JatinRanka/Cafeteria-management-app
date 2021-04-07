@@ -1,5 +1,7 @@
 class MenuItem < ApplicationRecord
   belongs_to :menu_categorie
+  validates :name, presence: true
+  validates :name, length: { minimum: 3 }
 
   #Return the corresponding cart_item for a particular menu_item_id
   def fetch_cart_item(current_user)

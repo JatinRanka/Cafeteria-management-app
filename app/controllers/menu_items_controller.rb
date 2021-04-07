@@ -8,14 +8,19 @@ class MenuItemsController < ApplicationController
   end
 
   def create
-    MenuItem.create!(
+    new_menu_item = MenuItem.new(
       name: params[:name],
       description: params[:description],
       price: params[:price],
       menu_categorie_id: params[:menu_categorie_id]
     )
 
-    flash[:success] = "Menu item added."
+    if new_menu_item.save
+      flash[:success] = "Menu item added."
+    else
+      flash[:error] = new_menu_item.errors.full_messages.join(", ")
+    end
+
     redirect_to menu_items_path
   end
 
@@ -38,9 +43,14 @@ class MenuItemsController < ApplicationController
     menu_item.price = price
     menu_item.description = description
     menu_item.menu_categorie_id = menu_categorie_id
-    menu_item.save
 
-    flash[:success] = "Menu item updated."
-    redirect_to menu_items_path
+    if menu_item.save
+      flash[:success] = "Menu item updated."
+    else
+      flash[:error] = menu_item.errors.full_messages.join(", ")
+    end
+
+    redirect_to edit_menu_item_path(id)
+    # redirect_to menu_items_path
   end
 end
