@@ -11,12 +11,21 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create!(
+    user = User.create!(
       name: params[:name],
       email: params[:email],
       password: params[:password],
       role: params[:role] || "customer"
     )
+
+    flash[:success] = "User created successfully."
+
+    if user.role == "customer"
+      return redirect_to new_sessions_path
+    else
+      return redirect_to users_path
+    end
+
   end
 
 end
